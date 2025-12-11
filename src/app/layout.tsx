@@ -1,5 +1,8 @@
-import type { Metadata } from 'next';
 import './globals.css';
+
+import type { Metadata } from 'next';
+
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'See Movies',
@@ -11,9 +14,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // TODO: узнать, зачем suppressHydrationWarning
   return (
-    <html lang="ru">
-      <body>{children}</body>
+    <html lang="ru" suppressHydrationWarning>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
