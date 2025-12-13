@@ -26,7 +26,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="bg-light-700 dark:bg-dark-700 dark:border-dark-600 mt-20 rounded-md border px-3 py-1 text-sm text-black dark:text-white"
+      className="bg-light-700 dark:bg-dark-700 dark:border-dark-600 mt-20 ml-[18px] rounded-md border px-3 py-1 text-sm text-black dark:text-white"
     >
       {isDark ? 'Светлая тема' : 'Тёмная тема'}
     </button>
