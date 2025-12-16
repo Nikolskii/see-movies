@@ -3,7 +3,7 @@ const TECHNOLOGIES = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Express.js', 'mongoD
 export function Techs() {
   return (
     <section className="p-3">
-      <div className="dark:bg-dark-800 rounded-10 px-[18px] py-[70px] md:px-[50px] md:py-[90px] xl:px-[70px] xl:py-[100px]">
+      <div className="dark:bg-dark-800 bg-light-800 rounded-10 px-[18px] py-[70px] md:px-[50px] md:py-[90px] xl:px-[70px] xl:py-[100px]">
         <h2 className="text-lg md:text-[22px]">Технологии</h2>
         <div className="mt-[28px] mb-[60px] border-b border-neutral-300 md:mt-[23px] md:mb-[80px] xl:mb-[90px]" />
         <h3 className="mb-[24px] text-center text-[30px] md:mb-[22px] md:text-[50px] xl:mb-[26px]">
