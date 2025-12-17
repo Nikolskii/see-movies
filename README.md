@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# See Movies — Frontend Architecture
 
-## Getting Started
+Проект построен на Next.js (App Router) с использованием Feature-Based Architecture (FBA).
 
-First, run the development server:
+Цель архитектуры:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- низкая связанность (Low Coupling)
+- высокая сплочённость (High Cohesion)
+- масштабируемость
+- понятная структура для онбординга и поддержки
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Основные архитектурные принципы
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Feature-Based Architecture  
+  Код группируется вокруг бизнес-фич, а не технических слоёв.
 
-## Learn More
+- Кричащая архитектура  
+  Структура проекта отражает назначение продукта, а не используемые технологии.
 
-To learn more about Next.js, take a look at the following resources:
+- Dependency Inversion  
+  Модули верхнего уровня зависят от абстракций, а не от реализаций.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Separation of Concerns  
+  Каждая часть системы отвечает только за свою зону ответственности.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Low Coupling / High Cohesion  
+  Изменения в одной фиче не затрагивают другие.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Структура проекта
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+src/
+app/ — Next.js App Router и composition root  
+ui-pages/ — страницы (UI-композиция)  
+features/ — бизнес-фичи  
+widgets/ — крупные UI-блоки (Header, Footer)  
+shared/ — переиспользуемый код без бизнес-логики  
+entities/ — доменные сущности (опционально)  
+styles/ — глобальные стили
+
+---
+
+## Назначение директорий
+
+### app
+
+- Только роутинг, layout’ы и сборка провайдеров
+- Не содержит бизнес-логики
+- Не содержит UI-компонентов
+
+### ui-pages
+
+- UI-реализация страниц приложения
+- Композиция widgets и features
+- Может содержать локальные ui-компоненты
+- Не содержит бизнес-логики
+
+### features
+
+- Изолированные бизнес-фичи
+- Включают UI, бизнес-логику, работу с API и состояние
+
+### widgets
+
+- Крупные UI-блоки приложения
+- Композируют features и shared/ui
+- Примеры: Header, Footer, Sidebar
+
+### shared
+
+- Переиспользуемый код без бизнес-смысла
+- UI-примитивы, хуки, провайдеры, утилиты
+
+### entities
+
+- Доменные сущности и типы
+- Используются несколькими фичами
+
+---
+
+## Именование
+
+- Папки — kebab-case  
+  widgets/header  
+  shared/ui/theme-toggle
+
+- React-компоненты — PascalCase  
+  Header.tsx  
+  ThemeToggle.tsx
+
+- Хуки — useSomething.ts
+
+---
+
+## Экспорты
+
+Используются только именованные экспорты:
+
+export function Header() {}
+
+Default export не используется для:
+
+- features
+- widgets
+- ui-pages
+
+---
+
+## Public API и реэкспорт
+
+Каждый модуль верхнего уровня имеет index.ts:
+
+widgets/header/
+Header.tsx  
+index.ts
+
+index.ts содержит только публичный API модуля:
+
+export { Header } from './Header';
+
+Импорт осуществляется только из корня модуля:
+
+import { Header } from '@/widgets/header';
+
+---
+
+## Правила размещения компонентов
+
+- Используется только на одной странице  
+  → ui-pages/\*/ui
+
+- Реализует бизнес-сценарий  
+  → features
+
+- Является крупным блоком интерфейса  
+  → widgets
+
+- Переиспользуемый UI без бизнес-логики  
+  → shared/ui
+
+---
+
+## Providers
+
+- Реализации провайдеров размещаются в shared/providers
+- Сборщик провайдеров — app/providers.tsx
+- app знает что подключить
+- shared знает как это работает
+
+---
+
+## Общее правило
+
+Если компонент сложно правильно разместить в структуре,
+значит он выполняет слишком много задач и нуждается в разделении ответственности.

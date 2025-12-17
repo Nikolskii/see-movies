@@ -1,8 +1,8 @@
-import './globals.css';
+import '../shared/styles/globals.css';
 
 import type { Metadata } from 'next';
 
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { AppProviders } from '@/app/providers';
 
 export const metadata: Metadata = {
   title: 'See Movies',
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

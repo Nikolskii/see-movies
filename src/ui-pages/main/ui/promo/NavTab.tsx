@@ -1,4 +1,4 @@
-import { NavItem } from '@/app/_components/Hero/NavItem';
+import { NavItem } from '@/ui-pages/main/ui/promo/NavItem';
 
 const links = [
   { name: 'О проекте', href: '#about' },

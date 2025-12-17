@@ -1,3 +1,5 @@
-export default function Home() {
-  return <div className="min-h-screen bg-black text-white"></div>;
+import { MainPage } from '@/ui-pages/main';
+
+export default function Page() {
+  return <MainPage />;
 }

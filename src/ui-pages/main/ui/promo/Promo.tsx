@@ -1,6 +1,6 @@
-import { NavTab } from '@/app/_components/Hero/NavTab';
+import { NavTab } from '@/ui-pages/main/ui/promo/NavTab';
 
-export function Hero() {
+export function Promo() {
   return (
     <section className="p-3">
       <div className="dark:bg-dark-800 bg-light-800 rounded-10 flex flex-col items-center gap-53 px-2 pt-55 pb-4 md:gap-78 md:pt-88 md:pb-7 xl:gap-38 xl:pt-40">
