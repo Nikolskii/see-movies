@@ -1,9 +1,5 @@
-import { ThemeToggle } from '@/shared/ui/theme-toggle';
-import { AboutMe } from '@/ui-pages/main/ui/about-me';
-import { AboutProject } from '@/ui-pages/main/ui/about-project';
-import { Portfolio } from '@/ui-pages/main/ui/portfolio';
-import { Promo } from '@/ui-pages/main/ui/promo';
-import { Techs } from '@/ui-pages/main/ui/techs';
+import { Footer, ThemeToggle } from '@/shared/ui';
+import { AboutMe, AboutProject, Portfolio, Promo, Techs } from '@/ui-pages/main/ui';
 
 export function MainPage() {
   return (
@@ -14,6 +10,7 @@ export function MainPage() {
         <Techs />
         <AboutMe />
         <Portfolio />
+        <Footer />
         <ThemeToggle />
       </div>
     </div>

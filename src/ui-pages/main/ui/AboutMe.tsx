@@ -2,7 +2,10 @@ import Image from 'next/image';
 
 export function AboutMe() {
   return (
-    <section className="px-3.5 py-[70px] md:px-[50px] md:py-[90px] lg:px-[70px] lg:py-[100px]">
+    <section
+      className="px-3.5 py-[70px] md:px-[50px] md:py-[90px] lg:px-[70px] lg:py-[100px]"
+      id="student"
+    >
       <h2 className="text-lg md:text-[22px]">Студент</h2>
       <div className="mt-7 mb-[60px] border-b border-neutral-300 md:mt-[23px] md:mb-[66px]" />
       <div className="flex flex-col-reverse gap-10 md:flex-row md:gap-[50px] lg:gap-[270px]">

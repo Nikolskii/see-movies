@@ -1,7 +1,10 @@
 // TODO: вынести повторяющиеся классы
 export function AboutProject() {
   return (
-    <section className="mx-[18px] my-[70px] md:mx-[50px] md:my-[90px] xl:mx-[110px] xl:my-[70px]">
+    <section
+      className="mx-[18px] my-[70px] md:mx-[50px] md:my-[90px] xl:mx-[110px] xl:my-[70px]"
+      id="about"
+    >
       <h2 className="text-lg md:text-[22px]">О проекте</h2>
       <div className="mt-[28px] mb-[60px] border-b border-neutral-300 md:mt-[23px] md:mb-[70px]" />
       <div className="mb-[60px] flex flex-col gap-[56px] md:flex-row md:gap-[93px] xl:mb-[110px]">
