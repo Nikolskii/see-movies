@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+// TODO: разобраться с предупреждением в console
+// TODO: изучить Image https://nextjs.org/docs/app/api-reference/components/image
 export function Logo() {
   return (
     <Link href="/">
