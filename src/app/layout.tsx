@@ -19,6 +19,7 @@ export default function RootLayout({
     <html lang="ru" suppressHydrationWarning>
       <body>
         <AppProviders>{children}</AppProviders>
+        <div id="drawer-root" />
       </body>
     </html>
   );
