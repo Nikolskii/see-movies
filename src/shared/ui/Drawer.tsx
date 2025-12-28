@@ -1,5 +1,6 @@
 'use client';
 
+import { X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -16,6 +17,7 @@ const DRAWER_ROOT_ID = 'drawer-root';
 
 // TODO: анимация открытия/закрытия
 // TODO: разобраться как работает lockScroll
+// TODO: уточнит какой z index у контейнера
 
 export function Drawer({
   open,
@@ -67,7 +69,6 @@ export function Drawer({
 
   if (!container) return null;
 
-  // TODO: уточнит какой z index
   const content = (
     <div className="fixed inset-0 z-50">
       {/* Overlay */}
@@ -80,19 +81,17 @@ export function Drawer({
       <div
         role="dialog"
         aria-modal="true"
-        className="absolute top-0 right-0 h-full w-[320px] max-w-[90vw] bg-white p-4 shadow-lg dark:bg-neutral-900"
+        className="bg-light-900 absolute top-0 right-0 h-full w-full max-w-[520px] dark:bg-neutral-900"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Закрыть"
-            className="rounded px-2 py-1"
-          >
-            ✕
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Закрыть"
+          className="action-fade absolute top-4 right-4 md:top-[30px] md:right-[30px]"
+        >
+          <X size={30} />
+        </button>
         <div className="min-h-0 overflow-auto">{children}</div>
       </div>
     </div>
