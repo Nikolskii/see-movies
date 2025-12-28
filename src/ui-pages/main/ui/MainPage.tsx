@@ -1,5 +1,9 @@
 import { Footer } from '@/shared/ui';
-import { AboutMe, AboutProject, Portfolio, Promo, Techs } from '@/ui-pages/main/ui';
+import { AboutMe } from '@/ui-pages/main/ui/AboutMe';
+import { AboutProject } from '@/ui-pages/main/ui/AboutProject';
+import { Portfolio } from '@/ui-pages/main/ui/Portfolio';
+import { Promo } from '@/ui-pages/main/ui/Promo';
+import { Techs } from '@/ui-pages/main/ui/Techs';
 import { Header } from '@/widgets';
 
 export function MainPage() {
