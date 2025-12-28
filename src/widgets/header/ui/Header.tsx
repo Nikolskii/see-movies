@@ -7,11 +7,11 @@ import { useUser } from '@/entities/user';
 import { AuthButtons } from '@/features/auth';
 import { ProfileLink } from '@/features/profile';
 import { Drawer, Logo, ThemeToggle } from '@/shared/ui';
+import { MobileHeaderMenu } from '@/widgets/header/ui/MobileHeaderMenu';
 
 export function Header() {
   const { isAuthorized } = useUser();
-  // TODO: как назвать эту переменную?
-  const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
@@ -29,14 +29,14 @@ export function Header() {
         {isAuthorized ? (
           <button
             className="action-fade cursor-pointer lg:hidden"
-            onClick={() => setIsMenuDrawerOpen(true)}
+            onClick={() => setIsMenuOpen(true)}
           >
             <Menu size={30} />
           </button>
         ) : null}
       </header>
-      <Drawer open={isMenuDrawerOpen} onClose={() => setIsMenuDrawerOpen(false)}>
-        <div>Контент drawer</div>
+      <Drawer open={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
+        <MobileHeaderMenu />
       </Drawer>
     </>
   );
