@@ -7,7 +7,7 @@ import { useUser } from '@/entities/user';
 import { AuthButtons } from '@/features/auth';
 import { ProfileLink } from '@/features/profile';
 import { Drawer, Logo, ThemeToggle } from '@/shared/ui';
-import { MobileHeaderMenu } from '@/widgets/header/ui/MobileHeaderMenu';
+import { MobileMenu } from '@/widgets/header/ui/MobileMenu';
 
 export function Header() {
   const { isAuthorized } = useUser();
@@ -36,7 +36,7 @@ export function Header() {
         ) : null}
       </header>
       <Drawer open={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
-        <MobileHeaderMenu />
+        <MobileMenu />
       </Drawer>
     </>
   );
