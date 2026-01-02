@@ -5,7 +5,6 @@
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  /* TODO: Удалить, если не переиспользуется */
   --color-dark-900: #202020;
   --color-dark-800: #272727;
   --color-dark-700: #2f2f2f;

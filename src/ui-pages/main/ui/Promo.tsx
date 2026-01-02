@@ -4,7 +4,6 @@ const links = [
   { name: 'Студент', href: '#student' },
 ];
 
-// TODO: разобраться с предупреждением в console
 export function Promo() {
   return (
     <section className="p-3">

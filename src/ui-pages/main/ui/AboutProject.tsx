@@ -1,4 +1,3 @@
-// TODO: вынести повторяющиеся классы
 export function AboutProject() {
   return (
     <section
