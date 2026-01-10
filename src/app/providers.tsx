@@ -1,7 +1,11 @@
-import { ThemeProvider } from '@/shared/providers';
+import { QueryProvider, ThemeProvider } from '@/shared/providers';
 
 export function AppProviders({ children }: Props) {
-  return <ThemeProvider>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider>
+      <QueryProvider>{children}</QueryProvider>
+    </ThemeProvider>
+  );
 }
 
 type Props = {
