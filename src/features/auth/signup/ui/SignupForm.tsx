@@ -1,21 +1,40 @@
 'use client';
 
+import { useMutation } from '@tanstack/react-query';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { signup, SignupRequest } from '@/features/auth/signup/api/signup';
 import { InputLabel } from '@/features/auth/signup/ui/InputLabel';
 import { Button, Input } from '@/shared/ui';
 
-type FormValues = { name: string; email: string; password: string };
+type FormValues = SignupRequest;
 
 export function SignupForm() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<FormValues>();
 
+  const mutation = useMutation({
+    mutationFn: signup,
+    onSuccess: (user) => {
+      console.log('signed up:', user);
+      // практичные варианты дальше:
+      // 1) router.push('/signin')
+      // 2) показать success-message
+      // 3) если у тебя будет entities/user — положить туда user
+    },
+    onError: (err: any) => {
+      // минимально: общая ошибка формы
+      // если сервер отдаёт field errors — можно разложить по полям (ниже покажу)
+      setError('root', { message: err?.message ?? 'Не удалось зарегистрироваться' });
+    },
+  });
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+    mutation.mutate(data);
   };
 
   return (
@@ -72,9 +91,20 @@ export function SignupForm() {
             },
           })}
         />
+        {errors.root?.message ? (
+          <p className="text-sm text-pink-500" role="alert">
+            {errors.root.message}
+          </p>
+        ) : null}
       </div>
       <div className="mt-auto pt-6 md:mt-0">
-        <Button type="submit" variant="primary" fullWidth>
+        <Button
+          type="submit"
+          variant="primary"
+          loading={mutation.isPending}
+          disabled={mutation.isPending}
+          fullWidth
+        >
           Зарегистрироваться
         </Button>
       </div>
