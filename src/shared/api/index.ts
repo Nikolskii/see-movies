@@ -1,2 +1,2 @@
-export type { ApiError } from './http';
-export { apiFetch } from './http';
+export type { ApiError } from './http/error';
+export { apiFetch } from './http/fetch';
