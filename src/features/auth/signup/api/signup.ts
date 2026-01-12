@@ -6,7 +6,6 @@ export type SignupRequest = {
   password: string;
 };
 
-// подстрой под ответ сервера
 export type SignupResponse = {
   name: string;
   email: string;
