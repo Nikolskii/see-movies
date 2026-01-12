@@ -39,7 +39,7 @@ export function Input({
         className={clsx(
           'bg-light-700 dark:bg-dark-700 w-full rounded-lg border p-[15px] text-[13px]',
           disabled ? 'opacity-60' : '',
-          hasError ? 'border-pink-500' : 'border-transparent',
+          hasError ? 'border-pink-500 text-pink-500' : 'dark:text border-transparent',
           inputClassName
         )}
         {...props}

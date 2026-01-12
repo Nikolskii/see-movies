@@ -3,13 +3,18 @@
 import { useMutation } from '@tanstack/react-query';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { signup, SignupRequest } from '@/features/auth/signup/api/signup';
+import { signup, SignupRequest, SignupResponse } from '@/features/auth/signup/api/signup';
 import { InputLabel } from '@/features/auth/signup/ui/InputLabel';
+import type { ApiError } from '@/shared/api';
 import { Button, Input } from '@/shared/ui';
 
 type FormValues = SignupRequest;
 
-export function SignupForm() {
+type Props = {
+  onSuccess?: (user: SignupResponse) => void;
+};
+
+export function SignupForm({ onSuccess }: Props) {
   const {
     register,
     handleSubmit,
@@ -17,19 +22,11 @@ export function SignupForm() {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const mutation = useMutation({
+  const mutation = useMutation<SignupResponse, ApiError, SignupRequest>({
     mutationFn: signup,
-    onSuccess: (user) => {
-      console.log('signed up:', user);
-      // практичные варианты дальше:
-      // 1) router.push('/signin')
-      // 2) показать success-message
-      // 3) если у тебя будет entities/user — положить туда user
-    },
-    onError: (err: any) => {
-      // минимально: общая ошибка формы
-      // если сервер отдаёт field errors — можно разложить по полям (ниже покажу)
-      setError('root', { message: err?.message ?? 'Не удалось зарегистрироваться' });
+    onSuccess: (user) => onSuccess?.(user),
+    onError: (err) => {
+      setError('root', { message: err.message });
     },
   });
 
