@@ -1,5 +1,10 @@
 # See Movies — Frontend Architecture
 
+TODO:
+
+- перейти на куки
+- добавить полосу загрузки страниц
+
 Проект построен на Next.js (App Router) с использованием Feature-Based Architecture (FBA).
 
 Цель архитектуры:

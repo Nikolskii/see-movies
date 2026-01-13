@@ -3,7 +3,8 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { useUser } from '@/entities/user';
+import { session } from '@/entities/session';
+import { useUserQuery } from '@/entities/user';
 import { AuthButtons } from '@/features/auth';
 import { ProfileLink } from '@/features/profile';
 import { Drawer, Logo, ThemeToggle } from '@/shared/ui';
@@ -13,13 +14,16 @@ import { MobileMenu } from '@/widgets/header/ui/MobileMenu';
 
 export function Header() {
   const pathname = usePathname();
-  const { isAuthorized } = useUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const token = session.getToken();
+  const { user, isLoading } = useUserQuery(token);
+  const isAuthorized = Boolean(user);
 
   const showDesktopNav = isAuthorized;
   const showBurger = isAuthorized;
 
-  const authSlot = isAuthorized ? (
+  const authSlot = isLoading ? null : isAuthorized ? (
     <div className="hidden lg:inline">
       <ProfileLink />
     </div>
