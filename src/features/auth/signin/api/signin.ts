@@ -5,8 +5,9 @@ export type SigninRequest = {
   password: string;
 };
 
+// TODO: актуализировать ответ
 export type SigninResponse = {
-  token: string;
+  ok: true;
 };
 
 export function signin(body: SigninRequest) {

@@ -9,16 +9,12 @@ type Result = {
   error: ApiError | null;
 };
 
-export function useUserQuery(token: string | null): Result {
-  const tokenValue = token ?? '';
-  const enabled = tokenValue.length > 0;
-
+export function useUserQuery(): Result {
   const query = useQuery<User, ApiError>({
     queryKey: ['user', 'me'],
-    queryFn: () => getUser(tokenValue),
-    enabled,
-    staleTime: 5 * 60 * 1000, // 5 минут считаем свежим
-    gcTime: 30 * 60 * 1000, // 30 минут держим в кэше после размонтирования
+    queryFn: getUser,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
     refetchOnWindowFocus: false,
     retry: 0,
   });

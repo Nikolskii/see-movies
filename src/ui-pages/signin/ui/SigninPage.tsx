@@ -5,6 +5,7 @@ import { Logo, ThemeToggle } from '@/shared/ui';
 import { SigninFormSection } from '@/ui-pages/signin/ui/SigninFormSection';
 
 // TODO: вынести стили в общий app layout
+// TODO: исключить смешение макета из-за кнопки переключения тем
 
 export function SigninPage() {
   return (

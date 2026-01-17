@@ -3,9 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { session } from '@/entities/session';
-import { useUserQuery } from '@/entities/user';
-import { AuthButtons } from '@/features/auth';
+import { AuthButtons, useAuth } from '@/features/auth';
 import { ProfileLink } from '@/features/profile';
 import { Drawer, Logo, ThemeToggle } from '@/shared/ui';
 import { BurgerButton } from '@/widgets/header/ui/BurgerButton';
@@ -16,10 +14,7 @@ export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const token = session.getToken();
-  const { user, isLoading } = useUserQuery(token);
-  const isAuthorized = Boolean(user);
-
+  const { isAuthorized, isLoading } = useAuth();
   const showDesktopNav = isAuthorized;
   const showBurger = isAuthorized;
 

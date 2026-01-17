@@ -11,7 +11,7 @@ import { Button, Input } from '@/shared/ui';
 type FormValues = SigninRequest;
 
 type Props = {
-  onSuccess?: (response: SigninResponse) => void;
+  onSuccess?: () => void;
 };
 
 export function SigninForm({ onSuccess }: Props) {
@@ -24,7 +24,7 @@ export function SigninForm({ onSuccess }: Props) {
 
   const mutation = useMutation<SigninResponse, ApiError, SigninRequest>({
     mutationFn: signin,
-    onSuccess: (response) => onSuccess?.(response),
+    onSuccess: () => onSuccess?.(),
     onError: (err) => {
       setError('root', { message: err.message });
     },

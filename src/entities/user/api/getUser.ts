@@ -6,9 +6,8 @@ export type User = {
   email: string;
 };
 
-export function getUser(token: string) {
+export function getUser() {
   return apiFetch<User>('/users/me', {
     method: 'GET',
-    headers: { Authorization: `Bearer ${token}` },
   });
 }
