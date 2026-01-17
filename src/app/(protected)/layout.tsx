@@ -9,7 +9,6 @@ export default async function ProtectedLayout({
   children: React.ReactNode;
 }>) {
   const jwt = await getAuthToken();
-
   if (!jwt) redirect(routes.signin);
 
   return children;
