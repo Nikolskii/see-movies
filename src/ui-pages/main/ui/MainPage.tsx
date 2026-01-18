@@ -1,3 +1,4 @@
+import { getMe } from '@/entities/user/server';
 import { Footer } from '@/shared/ui';
 import { AboutMe } from '@/ui-pages/main/ui/AboutMe';
 import { AboutProject } from '@/ui-pages/main/ui/AboutProject';
@@ -6,11 +7,13 @@ import { Promo } from '@/ui-pages/main/ui/Promo';
 import { Techs } from '@/ui-pages/main/ui/Techs';
 import { Header } from '@/widgets';
 
-export function MainPage() {
+export async function MainPage() {
+  const me = await getMe();
+
   return (
     <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
       <div className="container mx-auto">
-        <Header />
+        <Header isAuthorized={me.ok} />
         <Promo />
         <AboutProject />
         <Techs />

@@ -3,22 +3,25 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { AuthButtons, useAuth } from '@/features/auth';
+import { AuthButtons } from '@/features/auth';
 import { ProfileLink } from '@/features/profile';
 import { Drawer, Logo, ThemeToggle } from '@/shared/ui';
 import { BurgerButton } from '@/widgets/header/ui/BurgerButton';
 import { DesktopNav } from '@/widgets/header/ui/DesktopNav';
 import { MobileMenu } from '@/widgets/header/ui/MobileMenu';
 
-export function Header() {
+type Props = {
+  isAuthorized: boolean;
+};
+
+export function Header({ isAuthorized }: Props) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { isAuthorized, isLoading } = useAuth();
   const showDesktopNav = isAuthorized;
   const showBurger = isAuthorized;
 
-  const authSlot = isLoading ? null : isAuthorized ? (
+  const authSlot = isAuthorized ? (
     <div className="hidden lg:inline">
       <ProfileLink />
     </div>
