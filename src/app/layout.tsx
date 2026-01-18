@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" suppressHydrationWarning>
+    <html lang="ru" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
         <AppProviders>{children}</AppProviders>
         <div id="drawer-root" />
