@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { SigninForm } from '@/features/auth/signin';
+import { SigninForm } from '@/features/auth/';
 import { routes } from '@/shared/routes';
 
 export function SigninFormSection() {

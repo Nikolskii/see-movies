@@ -14,6 +14,8 @@ type Props = {
   isAuthorized: boolean;
 };
 
+// TODO: исключить скачек из-за кнопки переключения тем
+
 export function Header({ isAuthorized }: Props) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);

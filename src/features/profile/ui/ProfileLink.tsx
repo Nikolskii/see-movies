@@ -8,8 +8,6 @@ export function ProfileLink() {
   const pathname = usePathname();
   const isActive = pathname === routes.profile;
 
-  console.log('isActive', isActive);
-
   if (isActive) {
     return (
       <span

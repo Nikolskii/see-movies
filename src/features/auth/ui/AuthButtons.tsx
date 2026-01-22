@@ -2,6 +2,8 @@ import Link from 'next/link';
 
 import { routes } from '@/shared/routes';
 
+// TODO: вынести из features?
+
 export function AuthButtons() {
   return (
     <div className="flex items-center gap-3.5 md:gap-[30px]">
