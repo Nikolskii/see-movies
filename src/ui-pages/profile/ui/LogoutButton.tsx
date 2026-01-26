@@ -2,14 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 
-import { useLogoutMutation } from '@/features/auth';
+import { useLogout } from '@/features/auth/logout/model/useLogout';
 import { routes } from '@/shared/routes';
 import { Button } from '@/shared/ui';
 
 export function LogoutButton() {
   const router = useRouter();
 
-  const logout = useLogoutMutation({
+  const logout = useLogout({
     onSuccess: () => {
       router.push(routes.home);
     },

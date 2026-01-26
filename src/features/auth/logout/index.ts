@@ -1,1 +1,1 @@
-export { useLogoutMutation } from './model/use-logout-mutation';
+export { useLogout } from './model/useLogout';

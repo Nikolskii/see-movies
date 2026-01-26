@@ -3,8 +3,8 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { AuthButtons } from '@/features/auth';
 import { Drawer, Logo, ThemeToggle } from '@/shared/ui';
+import { AuthButtons } from '@/widgets/header/ui/AuthButtons';
 import { BurgerButton } from '@/widgets/header/ui/BurgerButton';
 import { DesktopNav } from '@/widgets/header/ui/DesktopNav';
 import { MobileMenu } from '@/widgets/header/ui/MobileMenu';
