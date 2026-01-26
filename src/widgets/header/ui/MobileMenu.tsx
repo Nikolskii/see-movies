@@ -3,10 +3,10 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { ProfileLink } from '@/features/profile';
 import { isRouteActive } from '@/shared/lib';
 import { routes } from '@/shared/routes';
 import { navLinks } from '@/widgets/header/model/nav';
+import { ProfileLink } from '@/widgets/header/ui/ProfileLink';
 
 const menuLinks = [{ href: routes.home, label: 'Главная' }, ...navLinks];
 
