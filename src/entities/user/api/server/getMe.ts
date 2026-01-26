@@ -1,11 +1,10 @@
-import { cookies } from 'next/headers';
-
-import { User } from '@/entities/user/api/getUser';
+import { User } from '@/entities/user/model/types';
 import { apiFetch, request } from '@/shared/api';
+import { getCookieHeader } from '@/shared/lib/server/getCookieHeader';
+// TODO: кешировать запрос
 
 export async function getMe() {
-  const cookieStore = await cookies();
-  const cookieHeader = cookieStore.toString();
+  const cookieHeader = await getCookieHeader();
 
   return request(() =>
     apiFetch<User>('/users/me', {

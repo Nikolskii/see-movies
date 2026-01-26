@@ -4,6 +4,8 @@ import { usePathname } from 'next/navigation';
 
 import { routes } from '@/shared/routes';
 
+// Вынести отсюда в header? это не фича
+
 export function ProfileLink() {
   const pathname = usePathname();
   const isActive = pathname === routes.profile;

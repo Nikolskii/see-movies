@@ -1,4 +1,4 @@
-import { getMe } from '@/entities/user/server/getMe';
+import { getMe } from '@/entities/user/api/server/getMe';
 import { LogoutButton } from '@/ui-pages/profile/ui/LogoutButton';
 import { Header } from '@/widgets/header/';
 

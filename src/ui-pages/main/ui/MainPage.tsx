@@ -1,4 +1,4 @@
-import { getMe } from '@/entities/user/server';
+import { getMe } from '@/entities/user/api/server';
 import { Footer } from '@/shared/ui';
 import { AboutMe } from '@/ui-pages/main/ui/AboutMe';
 import { AboutProject } from '@/ui-pages/main/ui/AboutProject';

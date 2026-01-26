@@ -1,1 +1,1 @@
-export type { User } from './api/getUser';
+export type { User } from './model/types';
