@@ -1,4 +1,4 @@
-import { ApiError, isErrorPayload } from '@/shared/api/http/error';
+import { ApiError, ErrorPayload } from '@/shared/api/http/model';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -39,4 +39,8 @@ export async function apiFetch<T>(
   }
 
   return payload as T;
+}
+
+function isErrorPayload(value: unknown): value is ErrorPayload {
+  return typeof value === 'object' && value !== null;
 }

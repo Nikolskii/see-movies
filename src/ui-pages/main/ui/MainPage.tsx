@@ -1,4 +1,5 @@
 import { getMe } from '@/entities/user/api/server';
+import { tryApi } from '@/shared/api/http/tryApi';
 import { Footer } from '@/shared/ui';
 import { AboutMe } from '@/ui-pages/main/ui/AboutMe';
 import { AboutProject } from '@/ui-pages/main/ui/AboutProject';
@@ -8,7 +9,7 @@ import { Techs } from '@/ui-pages/main/ui/Techs';
 import { Header } from '@/widgets';
 
 export async function MainPage() {
-  const me = await getMe();
+  const me = await tryApi(getMe);
 
   return (
     <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
