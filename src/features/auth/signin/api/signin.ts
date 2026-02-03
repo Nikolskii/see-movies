@@ -5,7 +5,6 @@ export type SigninRequest = {
   password: string;
 };
 
-// TODO: актуализировать ответ
 export type SigninResponse = {
   ok: true;
 };

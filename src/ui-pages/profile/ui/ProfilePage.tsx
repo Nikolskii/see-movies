@@ -1,17 +1,21 @@
-import { getMe } from '@/entities/user/api/server/getMe';
-import { tryApi } from '@/shared/api/http/tryApi';
+import { EditProfileSection } from '@/ui-pages/profile/ui/EditProfileSection';
+import { HeaderSection } from '@/ui-pages/profile/ui/HeaderSection';
 import { LogoutButton } from '@/ui-pages/profile/ui/LogoutButton';
-import { Header } from '@/widgets/header/';
+import { Title } from '@/ui-pages/profile/ui/Title';
+
+// TODO: найти попапы
+// TODO: Проверить кеширование на сервере cashe control всех запросов
 
 export async function ProfilePage() {
-  const me = await tryApi(getMe);
-
   return (
     <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
       <div className="center container mx-auto flex min-h-screen flex-col">
-        <Header isAuthorized={me.ok} />
-        <main className="flex flex-1 flex-col px-[30px] pb-3.5"></main>
-        <footer className="pb-[30px]">
+        <HeaderSection />
+        <main className="mx-auto flex flex-1 flex-col px-[30px] pt-[70px] pb-3.5 md:max-w-[400px]">
+          <Title />
+          <EditProfileSection />
+        </main>
+        <footer className="flex justify-center pb-[30px]">
           <LogoutButton />
         </footer>
       </div>

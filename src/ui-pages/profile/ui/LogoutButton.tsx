@@ -1,22 +1,24 @@
 'use client';
 
+import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
-import { useLogout } from '@/features/auth/logout/model/useLogout';
+import { logout } from '@/features/auth';
 import { routes } from '@/shared/routes';
 import { Button } from '@/shared/ui';
 
 export function LogoutButton() {
   const router = useRouter();
 
-  const logout = useLogout({
+  const logoutMutation = useMutation({
+    mutationFn: logout,
     onSuccess: () => {
       router.push(routes.home);
     },
   });
 
   function handleClick() {
-    logout.mutate();
+    logoutMutation.mutate();
   }
 
   return (
