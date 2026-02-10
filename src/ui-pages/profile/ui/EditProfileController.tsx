@@ -6,8 +6,9 @@ import { User, useUser } from '@/entities/user';
 import { EditProfileForm } from '@/features/edit-profile';
 import { Modal } from '@/shared/ui';
 
-// TODO:  переименовать секцию
-export function EditProfileSection() {
+// TODO: актуализировать modal
+
+export function EditProfileController() {
   const okBtnRef = useRef<HTMLButtonElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user, setUser } = useUser();

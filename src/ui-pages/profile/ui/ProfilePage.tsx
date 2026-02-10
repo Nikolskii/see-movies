@@ -1,10 +1,7 @@
-import { EditProfileSection } from '@/ui-pages/profile/ui/EditProfileSection';
+import { EditProfileController } from '@/ui-pages/profile/ui/EditProfileController';
 import { HeaderSection } from '@/ui-pages/profile/ui/HeaderSection';
 import { LogoutButton } from '@/ui-pages/profile/ui/LogoutButton';
 import { Title } from '@/ui-pages/profile/ui/Title';
-
-// TODO: найти попапы
-// TODO: Проверить кеширование на сервере cashe control всех запросов
 
 export async function ProfilePage() {
   return (
@@ -13,7 +10,7 @@ export async function ProfilePage() {
         <HeaderSection />
         <main className="mx-auto flex w-full max-w-[400px] flex-1 flex-col px-[30px] pt-[70px] pb-3.5">
           <Title />
-          <EditProfileSection />
+          <EditProfileController />
         </main>
         <footer className="flex justify-center pb-[30px]">
           <LogoutButton />
