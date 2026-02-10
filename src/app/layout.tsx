@@ -19,6 +19,7 @@ export default function RootLayout({
       <body>
         <AppProviders>{children}</AppProviders>
         <div id="drawer-root" />
+        <div id="modal-root" />
       </body>
     </html>
   );

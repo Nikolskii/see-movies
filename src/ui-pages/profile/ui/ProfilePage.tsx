@@ -11,7 +11,7 @@ export async function ProfilePage() {
     <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
       <div className="center container mx-auto flex min-h-screen flex-col">
         <HeaderSection />
-        <main className="mx-auto flex flex-1 flex-col px-[30px] pt-[70px] pb-3.5 md:max-w-[400px]">
+        <main className="mx-auto flex w-full max-w-[400px] flex-1 flex-col px-[30px] pt-[70px] pb-3.5">
           <Title />
           <EditProfileSection />
         </main>

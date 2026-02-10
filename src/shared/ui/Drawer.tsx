@@ -16,8 +16,7 @@ type Props = {
 const DRAWER_ROOT_ID = 'drawer-root';
 
 // TODO: анимация открытия/закрытия
-// TODO: разобраться как работает lockScroll
-// TODO: уточнит какой z index у контейнера
+// TODO: использовать реализацию, как в Modal
 
 export function Drawer({
   open,
@@ -70,7 +69,7 @@ export function Drawer({
   if (!container) return null;
 
   const content = (
-    <div className="fixed inset-0 z-50">
+    <div className="z-drawer fixed inset-0">
       {/* Overlay */}
       <div
         className="absolute inset-0 bg-black/50"

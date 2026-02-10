@@ -25,6 +25,10 @@
   --color-text-muted: #a0a0a0;
 
   --radius-10: 10px;
+
+  --z-modal: 50;
+  --z-drawer: 50;
+  --z-toast: 60;
 }
 
 html {
@@ -37,4 +41,18 @@ body {
 
 .action-fade {
   @apply transition-opacity duration-300 hover:opacity-60 active:opacity-40;
+}
+
+@layer utilities {
+  .z-modal {
+    z-index: var(--z-modal);
+  }
+
+  .z-drawer {
+    z-index: var(--z-drawer);
+  }
+
+  .z-toast {
+    z-index: var(--z-toast);
+  }
 }
