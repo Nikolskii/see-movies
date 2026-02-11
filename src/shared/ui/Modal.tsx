@@ -98,7 +98,7 @@ export function Modal({
             type="button"
             onClick={onClose}
             aria-label="Закрыть"
-            className="action-fade absolute top-4 right-4 cursor-pointer"
+            className="action-fade absolute top-4 right-4 cursor-pointer outline-0"
             ref={closeBtnRef}
           >
             <X size={24} />

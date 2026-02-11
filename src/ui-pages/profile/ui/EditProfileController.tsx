@@ -1,15 +1,13 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { User, useUser } from '@/entities/user';
 import { EditProfileForm } from '@/features/edit-profile';
 import { Modal } from '@/shared/ui';
-
-// TODO: актуализировать modal
+import { EditProfileSuccessModal } from '@/ui-pages/profile/ui/EditProfileSuccessModal';
 
 export function EditProfileController() {
-  const okBtnRef = useRef<HTMLButtonElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user, setUser } = useUser();
   const { name, email } = user;
@@ -22,9 +20,9 @@ export function EditProfileController() {
   return (
     <>
       <EditProfileForm defaultValues={{ name, email }} onSuccess={handleSuccess} />
+
       <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        Успешно обновлено
-        <button ref={okBtnRef}>OK</button>
+        <EditProfileSuccessModal />
       </Modal>
     </>
   );
