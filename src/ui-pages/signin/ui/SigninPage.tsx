@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { routes } from '@/shared/routes';
 import { Logo, ThemeToggle } from '@/shared/ui';
-import { SigninFormSection } from '@/ui-pages/signin/ui/SigninFormSection';
+import { SigninController } from '@/ui-pages/signin/ui/SigninController';
 
 // TODO: вынести стили в общий app layout
 // TODO: исключить смешение макета из-за кнопки переключения тем
@@ -21,7 +21,7 @@ export function SigninPage() {
           <h1 className="mb-20 text-[24px] font-medium">Рады видеть!</h1>
         </header>
         <main className="flex flex-1 flex-col px-[30px] pb-3.5">
-          <SigninFormSection />
+          <SigninController />
         </main>
         <footer className="pb-[30px]">
           <p className="text-center text-[12px] text-gray-500 md:text-[14px]">
