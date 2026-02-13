@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { routes } from '@/shared/routes';
 import { Logo, ThemeToggle } from '@/shared/ui';
-import { SignupFormSection } from '@/ui-pages/signup/ui/SignupFormSection';
+import { SignupController } from '@/ui-pages/signup/ui/SignupController';
 
 // TODO: вынести стили в общий app layout
 
@@ -20,7 +20,7 @@ export function SignupPage() {
           <h1 className="mb-20 text-[24px] font-medium">Добро пожаловать!</h1>
         </header>
         <main className="flex flex-1 flex-col px-[30px] pb-3.5">
-          <SignupFormSection />
+          <SignupController />
         </main>
         <footer className="pb-[30px]">
           <p className="text-center text-[12px] text-gray-500 md:text-[14px]">
