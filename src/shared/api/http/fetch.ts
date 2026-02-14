@@ -1,16 +1,21 @@
 import { ApiError, ErrorPayload } from '@/shared/api/http/model';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const DEFAULT_API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-if (!API_BASE_URL) {
+if (!DEFAULT_API_BASE_URL) {
   throw new Error('NEXT_PUBLIC_API_URL is not defined');
 }
 
+type ApiFetchInit = RequestInit & {
+  json?: unknown;
+};
+
 export async function apiFetch<T>(
   path: string,
-  init?: RequestInit & { json?: unknown }
+  init?: ApiFetchInit,
+  baseUrl: string = DEFAULT_API_BASE_URL as string
 ): Promise<T> {
-  const res = await fetch(`${API_BASE_URL}${path}`, {
+  const res = await fetch(`${baseUrl}${path}`, {
     credentials: 'include',
     ...init,
     headers: {
@@ -28,11 +33,13 @@ export async function apiFetch<T>(
     : await res.text().catch(() => null);
 
   if (!res.ok) {
+    const message =
+      isErrorPayload(payload) && typeof payload.message === 'string'
+        ? payload.message
+        : 'Ошибка запроса';
+
     throw {
-      message:
-        isErrorPayload(payload) && typeof payload.message === 'string'
-          ? payload.message
-          : 'Ошибка запроса',
+      message,
       status: res.status,
       details: payload,
     } satisfies ApiError;
@@ -42,5 +49,5 @@ export async function apiFetch<T>(
 }
 
 function isErrorPayload(value: unknown): value is ErrorPayload {
-  return typeof value === 'object' && value !== null;
+  return typeof value === 'object' && value !== null && 'message' in value;
 }
