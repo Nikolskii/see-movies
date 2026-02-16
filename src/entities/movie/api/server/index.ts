@@ -1,0 +1,1 @@
+export { getBeatfilmMovies } from './getBeatfilmMovies';
