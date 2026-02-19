@@ -1,10 +1,7 @@
 import { ApiError, ErrorPayload } from '@/shared/api/http/model';
+import { API_URL } from '@/shared/config/env';
 
-const DEFAULT_API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-
-if (!DEFAULT_API_BASE_URL) {
-  throw new Error('NEXT_PUBLIC_API_URL is not defined');
-}
+const DEFAULT_API_BASE_URL = API_URL;
 
 type ApiFetchInit = RequestInit & {
   json?: unknown;
