@@ -2,12 +2,7 @@ import { cache } from 'react';
 
 import { BeatfilmMovie } from '@/entities/movie/model/types';
 import { apiFetch } from '@/shared/api';
-
-const API_NOMOREPARTIES_URL = process.env.NEXT_PUBLIC_NOMOREPARTIES_URL;
-
-if (!API_NOMOREPARTIES_URL) {
-  throw new Error('NEXT_PUBLIC_NOMOREPARTIES_URL is not defined');
-}
+import { NOMOREPARTIES_API_URL } from '@/shared/config/env';
 
 // TODO: кешировать запрос SSG или ISR
 
@@ -17,6 +12,6 @@ export const getBeatfilmMovies = cache(async () => {
     {
       method: 'GET',
     },
-    API_NOMOREPARTIES_URL
+    NOMOREPARTIES_API_URL
   );
 });
