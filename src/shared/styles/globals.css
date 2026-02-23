@@ -29,6 +29,8 @@
   --z-modal: 50;
   --z-drawer: 50;
   --z-toast: 60;
+
+  --transition-duration-base: 300ms;
 }
 
 html {
@@ -40,7 +42,7 @@ body {
 }
 
 .action-fade {
-  @apply transition-opacity duration-300 hover:opacity-60 active:opacity-40;
+  @apply duration-base transition-opacity hover:opacity-60 active:opacity-40;
 }
 
 @layer utilities {

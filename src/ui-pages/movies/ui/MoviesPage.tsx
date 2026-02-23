@@ -1,5 +1,5 @@
-import { formatDuration, getNomorepartiesImageUrl, MovieCard } from '@/entities/movie';
 import { getBeatfilmMovies } from '@/entities/movie/api/server';
+import { MoviesListController } from '@/ui-pages/movies/ui/MoviesListController';
 import { Header } from '@/widgets';
 
 export async function MoviesPage() {
@@ -10,21 +10,7 @@ export async function MoviesPage() {
       <div className="container mx-auto">
         <Header isAuthorized />
         <div>
-          {beatfilmMovies.map(({ id, nameRU, trailerLink, duration, image }) => {
-            return (
-              <MovieCard
-                key={id}
-                name={nameRU}
-                trailerLink={trailerLink}
-                duration={formatDuration(duration)}
-                handleCardClick={() => {}}
-                image={{
-                  alternativeText: image.alternativeText || 'Обложка фильма',
-                  link: getNomorepartiesImageUrl(image.url),
-                }}
-              />
-            );
-          })}
+          <MoviesListController movies={beatfilmMovies} />
         </div>
       </div>
     </div>
