@@ -3,7 +3,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { signup, SignupRequest, SignupResponse } from '@/features/auth/signup/api/signup';
+import { signup, SignupRequest, SignupResponse } from '@/features/auth';
 import { InputLabel } from '@/features/auth/signup/ui/InputLabel';
 import type { ApiError } from '@/shared/api';
 import { Button, Input } from '@/shared/ui';
