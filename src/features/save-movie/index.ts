@@ -1,2 +1,2 @@
-export type { SaveMovieRequest, SaveMovieResponse } from './api/saveMovie';
+export type { SaveMovieRequest } from './api/saveMovie';
 export { saveMovie } from './api/saveMovie';

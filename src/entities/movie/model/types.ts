@@ -1,19 +1,27 @@
-// TODO: использовать общий тип Movie
-export type BeatfilmMovie = {
+type Movie = {
   country: string;
-  id: number;
-  nameRU: string;
-  trailerLink: string;
-  duration: number;
   director: string;
-  year: number;
+  duration: number;
+  year: string;
   description: string;
-  nameRu: string;
+  trailerLink: string;
+  thumbnail: string;
+  nameRU: string;
   nameEN: string;
+};
+
+export type BeatfilmMovie = Movie & {
+  id: number;
   image: {
     url: string;
     alternativeText: string;
   };
+};
+
+export type SavedMovie = Movie & {
+  image: string;
+  movieId: number;
+  _id: string;
 };
 
 export type MovieCardAction =

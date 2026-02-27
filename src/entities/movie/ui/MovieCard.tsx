@@ -1,27 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { MovieCardAction as MovieCardActionType } from '@/entities/movie/model/types';
+import { MovieCardAction as MovieCardActionType } from '@/entities/movie';
 import { MovieCardAction } from '@/entities/movie/ui/MovieCardAction';
 
-type ImageType = {
-  alternativeText: string;
-  link: string;
-};
+// TODO: сделать клиентским только этот компонент
 
 type Props = {
   name: string;
   trailerLink: string;
   duration: string;
-  image: ImageType;
+  image: string;
   action: MovieCardActionType;
 };
 
-// TODO: как оптимизировать стили article?
-
 export function MovieCard({ name, trailerLink, duration, image, action }: Props) {
   return (
-    <article className="group relative w-full max-w-[340px] min-w-[300px] md:max-w-[340px] xl:max-w-[360px]">
+    <article className="group relative w-[clamp(300px,100%,340px)]">
       <MovieCardAction action={action} name={name} />
       <Link
         href={trailerLink}
@@ -31,8 +26,8 @@ export function MovieCard({ name, trailerLink, duration, image, action }: Props)
         className="action-fade relative block h-[168px] w-full overflow-hidden rounded-md md:h-[190px] xl:h-[200px]"
       >
         <Image
-          alt={image.alternativeText || `Постер фильма «${name}»`}
-          src={image.link}
+          src={image}
+          alt={`Постер фильма «${name}»`}
           className="object-cover"
           fill
           sizes="(min-width: 1280px) 360px, (min-width: 768px) 340px, 300px"

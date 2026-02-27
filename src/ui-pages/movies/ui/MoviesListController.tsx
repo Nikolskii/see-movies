@@ -1,6 +1,7 @@
 'use client';
 
 // TODO: как не делать весь список клиентским?
+// TODO: обработать ошибки мутаций
 
 import { useMutation } from '@tanstack/react-query';
 
@@ -9,12 +10,10 @@ import {
   formatDuration,
   getNomorepartiesImageUrl,
   MovieCard,
+  SavedMovie,
 } from '@/entities/movie';
-import {
-  saveMovie as saveMovieMutation,
-  SaveMovieRequest,
-  SaveMovieResponse,
-} from '@/features/save-movie';
+import { deleteMovie as deleteMovieMutation, DeleteMovieRequest } from '@/features/delete-movie';
+import { saveMovie as saveMovieMutation, SaveMovieRequest } from '@/features/save-movie';
 import { ApiError } from '@/shared/api';
 
 type Props = {
@@ -22,8 +21,12 @@ type Props = {
 };
 
 export function MoviesListController({ movies }: Props) {
-  const saveMovie = useMutation<SaveMovieResponse, ApiError, SaveMovieRequest>({
+  const saveMovie = useMutation<SavedMovie, ApiError, SaveMovieRequest>({
     mutationFn: saveMovieMutation,
+  });
+
+  const deleteMovie = useMutation<SavedMovie, ApiError, DeleteMovieRequest>({
+    mutationFn: deleteMovieMutation,
   });
 
   return (
@@ -36,28 +39,28 @@ export function MoviesListController({ movies }: Props) {
             name={movie.nameRU}
             trailerLink={movie.trailerLink}
             duration={formatDuration(movie.duration)}
-            image={{
-              alternativeText: movie.image.alternativeText || 'Обложка фильма',
-              link: getNomorepartiesImageUrl(movie.image.url),
-            }}
-            action={{
-              type: 'save',
-              onClick: () => {
-                saveMovie.mutate({
-                  country: movie.country,
-                  director: movie.director,
-                  duration: movie.duration,
-                  year: movie.year,
-                  description: movie.description,
-                  image: getNomorepartiesImageUrl(movie.image.url),
-                  trailerLink: movie.trailerLink,
-                  thumbnail: getNomorepartiesImageUrl(movie.image.url),
-                  movieId: movie.id,
-                  nameRU: movie.nameRU,
-                  nameEN: movie.nameEN,
-                });
-              },
-            }}
+            image={getNomorepartiesImageUrl(movie.image.url)}
+            action={
+              // { type: 'delete', onClick: () => deleteMovie.mutate({ movieId: movie._id }) }
+              {
+                type: 'save',
+                onClick: () => {
+                  saveMovie.mutate({
+                    country: movie.country,
+                    director: movie.director,
+                    duration: movie.duration,
+                    year: movie.year,
+                    description: movie.description,
+                    image: getNomorepartiesImageUrl(movie.image.url),
+                    trailerLink: movie.trailerLink,
+                    thumbnail: getNomorepartiesImageUrl(movie.image.url),
+                    movieId: movie.id,
+                    nameRU: movie.nameRU,
+                    nameEN: movie.nameEN,
+                  });
+                },
+              }
+            }
           />
         );
       })}
