@@ -1,7 +1,7 @@
 'use client';
 
 import { useUser } from '@/entities/user';
-import { Header } from '@/widgets';
+import { Header } from '@/widgets/header';
 
 export function HeaderSection() {
   const { isAuthorized } = useUser();

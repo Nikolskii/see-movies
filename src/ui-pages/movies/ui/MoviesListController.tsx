@@ -2,6 +2,9 @@
 
 // TODO: как не делать весь список клиентским?
 // TODO: обработать ошибки мутаций
+// TODO: актуализировать thumbnail
+
+// TODO: передавать action слотами
 
 import { useMutation } from '@tanstack/react-query';
 
@@ -15,9 +18,11 @@ import {
 import { deleteMovie as deleteMovieMutation, DeleteMovieRequest } from '@/features/delete-movie';
 import { saveMovie as saveMovieMutation, SaveMovieRequest } from '@/features/save-movie';
 import { ApiError } from '@/shared/api';
+import { BeatfilmMovieWithSaved } from '@/ui-pages/movies/model/types';
+import { MoviesGrid } from '@/widgets/movies-grid';
 
 type Props = {
-  movies: BeatfilmMovie[];
+  movies: BeatfilmMovieWithSaved[];
 };
 
 export function MoviesListController({ movies }: Props) {
@@ -28,11 +33,11 @@ export function MoviesListController({ movies }: Props) {
   const deleteMovie = useMutation<SavedMovie, ApiError, DeleteMovieRequest>({
     mutationFn: deleteMovieMutation,
   });
+  // { type: 'delete', onClick: () => deleteMovie.mutate({ movieId: movie._id }) }
 
   return (
-    <>
+    <MoviesGrid>
       {movies.map((movie) => {
-        // TODO: актуализировать thumbnail
         return (
           <MovieCard
             key={movie.id}
@@ -41,29 +46,30 @@ export function MoviesListController({ movies }: Props) {
             duration={formatDuration(movie.duration)}
             image={getNomorepartiesImageUrl(movie.image.url)}
             action={
-              // { type: 'delete', onClick: () => deleteMovie.mutate({ movieId: movie._id }) }
-              {
-                type: 'save',
-                onClick: () => {
-                  saveMovie.mutate({
-                    country: movie.country,
-                    director: movie.director,
-                    duration: movie.duration,
-                    year: movie.year,
-                    description: movie.description,
-                    image: getNomorepartiesImageUrl(movie.image.url),
-                    trailerLink: movie.trailerLink,
-                    thumbnail: getNomorepartiesImageUrl(movie.image.url),
-                    movieId: movie.id,
-                    nameRU: movie.nameRU,
-                    nameEN: movie.nameEN,
-                  });
-                },
-              }
+              movie.isSaved
+                ? { type: 'saved' }
+                : {
+                    type: 'save',
+                    onClick: () => {
+                      saveMovie.mutate({
+                        country: movie.country,
+                        director: movie.director,
+                        duration: movie.duration,
+                        year: movie.year,
+                        description: movie.description,
+                        image: getNomorepartiesImageUrl(movie.image.url),
+                        trailerLink: movie.trailerLink,
+                        thumbnail: getNomorepartiesImageUrl(movie.image.url),
+                        movieId: movie.id,
+                        nameRU: movie.nameRU,
+                        nameEN: movie.nameEN,
+                      });
+                    },
+                  }
             }
           />
         );
       })}
-    </>
+    </MoviesGrid>
   );
 }

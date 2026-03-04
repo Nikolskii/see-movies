@@ -5,7 +5,7 @@ import { AboutProject } from '@/ui-pages/main/ui/AboutProject';
 import { Portfolio } from '@/ui-pages/main/ui/Portfolio';
 import { Promo } from '@/ui-pages/main/ui/Promo';
 import { Techs } from '@/ui-pages/main/ui/Techs';
-import { Header } from '@/widgets';
+import { Header } from '@/widgets/header';
 
 export async function MainPage() {
   const jwt = await getAuthToken();

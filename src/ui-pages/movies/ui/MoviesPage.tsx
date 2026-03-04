@@ -1,10 +1,15 @@
-import { getBeatfilmMovies } from '@/entities/movie/api/server';
+import { getBeatfilmMovies, getSavedMovies } from '@/entities/movie/api/server';
 import { Footer } from '@/shared/ui';
+import { mergeBeatfilmWithSaved } from '@/ui-pages/movies/lib/mergeBeatfilmWithSaved';
 import { MoviesListController } from '@/ui-pages/movies/ui/MoviesListController';
-import { Header } from '@/widgets';
+import { Header } from '@/widgets/header';
 
 export async function MoviesPage() {
   const beatfilmMovies = await getBeatfilmMovies();
+  const savedMovies = await getSavedMovies();
+
+  // TODO: rename to moviesForRender
+  const movies = mergeBeatfilmWithSaved({ beatfilmMovies, savedMovies });
 
   return (
     <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
@@ -12,9 +17,7 @@ export async function MoviesPage() {
         <Header isAuthorized />
         {/* Form and input search movie */}
         {/* Switcher короткого кино */}
-        <div className="flex flex-wrap justify-center gap-10 px-2.5 md:gap-x-[30px] md:gap-y-[45px] xl:gap-y-[60px]">
-          <MoviesListController movies={beatfilmMovies} />
-        </div>
+        <MoviesListController movies={movies} />
         <Footer />
       </div>
     </div>
