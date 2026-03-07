@@ -1,18 +1,20 @@
 import { getSavedMovies } from '@/entities/movie/api/server';
 import { Footer } from '@/shared/ui';
-import { SavedMoviesListController } from '@/ui-pages/saved-movies/ui/SavedMoviesListController';
+import { SavedMoviesList } from '@/ui-pages/saved-movies/ui/SavedMoviesList';
 import { Header } from '@/widgets/header';
 
 export async function SavedMoviesPage() {
   const savedMovies = await getSavedMovies();
 
   return (
-    <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
-      <div className="container mx-auto">
+    <div className="dark:bg-dark-900 bg-color-light-900 text-black dark:text-white">
+      <div className="container mx-auto flex min-h-screen flex-col">
         <Header isAuthorized />
         {/* Form and input search movie */}
         {/* Switcher короткого кино */}
-        <SavedMoviesListController movies={savedMovies} />
+        <div className="flex-1">
+          <SavedMoviesList movies={savedMovies} />
+        </div>
         <Footer />
       </div>
     </div>

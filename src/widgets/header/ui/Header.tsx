@@ -35,9 +35,11 @@ export function Header({ isAuthorized }: Props) {
   return (
     <>
       <header className="flex min-h-[74px] items-center justify-between px-3.5 md:px-[30px] lg:px-[50px]">
-        <Logo />
+        <div className="flex-1">
+          <Logo />
+        </div>
         {showDesktopNav ? <DesktopNav pathname={pathname} /> : null}
-        <div className="flex items-center gap-[30px]">
+        <div className="flex flex-1 items-center justify-end gap-[30px]">
           <ThemeToggle />
           {authSlot}
           {showBurger ? <BurgerButton handleClick={() => setIsMenuOpen(true)} /> : null}

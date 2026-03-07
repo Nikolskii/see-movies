@@ -1,23 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { MovieCardAction as MovieCardActionType } from '@/entities/movie';
-import { MovieCardAction } from '@/entities/movie/ui/MovieCardAction';
-
-// TODO: сделать клиентским только этот компонент
-
 type Props = {
   name: string;
   trailerLink: string;
   duration: string;
   image: string;
-  action: MovieCardActionType;
+  actionSlot: React.ReactNode;
 };
 
-export function MovieCard({ name, trailerLink, duration, image, action }: Props) {
+export function MovieCard({ name, trailerLink, duration, image, actionSlot }: Props) {
   return (
     <article className="group relative w-[clamp(300px,100%,340px)]">
-      <MovieCardAction action={action} name={name} />
+      <div className="pointer-events-none absolute top-4 right-4 z-10">{actionSlot}</div>
       <Link
         href={trailerLink}
         target="_blank"

@@ -22,10 +22,4 @@ export type SavedMovie = Movie & {
   image: string;
   movieId: number;
   _id: string;
-  // owner: string;
 };
-
-export type MovieCardAction =
-  | { type: 'save'; onClick: () => void }
-  | { type: 'delete'; onClick: () => void }
-  | { type: 'saved' };
