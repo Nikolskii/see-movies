@@ -1,6 +1,6 @@
 import { EditProfileController } from '@/ui-pages/profile/ui/EditProfileController';
 import { HeaderSection } from '@/ui-pages/profile/ui/HeaderSection';
-import { LogoutButton } from '@/ui-pages/profile/ui/LogoutButton';
+import { LogoutButtonController } from '@/ui-pages/profile/ui/LogoutButtonController';
 import { Title } from '@/ui-pages/profile/ui/Title';
 
 export async function ProfilePage() {
@@ -13,7 +13,7 @@ export async function ProfilePage() {
           <EditProfileController />
         </main>
         <footer className="flex justify-center pb-[30px]">
-          <LogoutButton />
+          <LogoutButtonController />
         </footer>
       </div>
     </div>
