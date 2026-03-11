@@ -4,11 +4,9 @@ import { routes } from '@/shared/routes';
 import { Logo, ThemeToggle } from '@/shared/ui';
 import { SignupController } from '@/ui-pages/signup/ui/SignupController';
 
-// TODO: вынести стили в общий app layout
-
 export function SignupPage() {
   return (
-    <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
+    <div className="page-root">
       <div className="container mx-auto flex min-h-screen flex-col md:max-w-[400px]">
         <header className="flex flex-col items-center justify-center">
           <div className="mb-5 flex w-full justify-end p-3">

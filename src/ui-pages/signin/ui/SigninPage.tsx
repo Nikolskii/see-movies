@@ -4,12 +4,9 @@ import { routes } from '@/shared/routes';
 import { Logo, ThemeToggle } from '@/shared/ui';
 import { SigninController } from '@/ui-pages/signin/ui/SigninController';
 
-// TODO: вынести стили в общий app layout
-// TODO: исключить смешение макета из-за кнопки переключения тем
-
 export function SigninPage() {
   return (
-    <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
+    <div className="page-root">
       <div className="container mx-auto flex min-h-screen flex-col md:max-w-[400px]">
         <header className="flex flex-col items-center justify-center">
           <div className="mb-5 flex w-full justify-end p-3">

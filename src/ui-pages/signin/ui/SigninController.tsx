@@ -24,7 +24,7 @@ export function SigninController() {
 
   return (
     <>
-      <SigninForm onSuccess={handleFormSuccess} />;
+      <SigninForm onSuccess={handleFormSuccess} />
       <Modal open={isModalOpen} onClose={handleModalClose}>
         <SigninSuccessModal />
       </Modal>

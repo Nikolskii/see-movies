@@ -12,7 +12,7 @@ export async function MainPage() {
   const isAuthorized = Boolean(jwt);
 
   return (
-    <div className="dark:bg-dark-900 bg-color-light-900 min-h-screen text-black dark:text-white">
+    <div className="page-root">
       <div className="container mx-auto">
         <Header isAuthorized={isAuthorized} />
         <Promo />

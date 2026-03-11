@@ -7,7 +7,7 @@ export async function SavedMoviesPage() {
   const savedMovies = await getSavedMovies();
 
   return (
-    <div className="dark:bg-dark-900 bg-color-light-900 text-black dark:text-white">
+    <div className="page-root">
       <div className="container mx-auto flex min-h-screen flex-col">
         <Header isAuthorized />
         {/* Form and input search movie */}

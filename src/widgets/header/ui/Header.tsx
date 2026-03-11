@@ -14,9 +14,6 @@ type Props = {
   isAuthorized: boolean;
 };
 
-// TODO: исключить скачек из-за кнопки переключения тем
-// TODO: сделать блок с кнопками фильмов по-середине
-
 export function Header({ isAuthorized }: Props) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);

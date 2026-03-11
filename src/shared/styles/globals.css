@@ -41,11 +41,11 @@ body {
   font-family: var(--font-sans);
 }
 
-.action-fade {
-  @apply duration-base transition-opacity hover:opacity-60 active:opacity-40;
-}
-
 @layer utilities {
+  .action-fade {
+    @apply duration-base transition-opacity hover:opacity-60 active:opacity-40;
+  }
+
   .z-modal {
     z-index: var(--z-modal);
   }
@@ -56,5 +56,9 @@ body {
 
   .z-toast {
     z-index: var(--z-toast);
+  }
+
+  .page-root {
+    @apply bg-light-900 dark:bg-dark-900 min-h-screen text-black dark:text-white;
   }
 }
