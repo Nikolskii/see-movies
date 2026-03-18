@@ -1,4 +1,4 @@
-type Movie = {
+export type Movie = {
   country: string;
   director: string;
   duration: number;
@@ -22,4 +22,8 @@ export type SavedMovie = Movie & {
   image: string;
   movieId: number;
   _id: string;
+};
+
+export type BeatfilmMovieWithSaved = BeatfilmMovie & {
+  isSaved: boolean;
 };

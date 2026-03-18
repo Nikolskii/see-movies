@@ -1,5 +1,5 @@
 import { BeatfilmMovie, SavedMovie } from '@/entities/movie';
-import { BeatfilmMovieWithSaved } from '@/ui-pages/movies/model/types';
+import { BeatfilmMovieWithSaved } from '@/entities/movie/model/types';
 
 type Params = {
   beatfilmMovies: BeatfilmMovie[];
