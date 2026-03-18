@@ -1,15 +1,28 @@
+import { filterShortMovies, mergeBeatfilmWithSaved } from '@/entities/movie';
 import { getBeatfilmMovies, getSavedMovies } from '@/entities/movie/api/server';
+import { ShortMoviesToggle } from '@/features/filter-short-movies';
 import { Footer } from '@/shared/ui';
-import { mergeBeatfilmWithSaved } from '@/ui-pages/movies/lib/mergeBeatfilmWithSaved';
 import { MoviesList } from '@/ui-pages/movies/ui/MoviesList';
 import { Header } from '@/widgets/header';
 
-export async function MoviesPage() {
+type Props = {
+  isShortOnly: boolean;
+};
+
+export async function MoviesPage({ isShortOnly }: Props) {
   const beatfilmMovies = await getBeatfilmMovies();
   const savedMovies = await getSavedMovies();
 
-  // TODO: rename to moviesForRender
-  const movies = mergeBeatfilmWithSaved({ beatfilmMovies, savedMovies });
+  const mergedMovies = mergeBeatfilmWithSaved({ beatfilmMovies, savedMovies });
+  const filteredMovies = isShortOnly ? filterShortMovies(mergedMovies) : mergedMovies;
+
+  //   const filteredMovies = filterMovies({
+  //   movies: mergedMovies,
+  //   query: searchQuery,
+  //   isShortOnly,
+  // });
+
+  // const visibleMovies = filteredMovies.slice(0, visibleCount);
 
   return (
     <div className="page-root">
@@ -17,8 +30,9 @@ export async function MoviesPage() {
         <Header isAuthorized />
         {/* Form and input search movie */}
         {/* Switcher короткого кино */}
+        <ShortMoviesToggle />
         <div className="flex-1">
-          <MoviesList movies={movies} />
+          <MoviesList movies={filteredMovies} />
         </div>
         <Footer />
       </div>
