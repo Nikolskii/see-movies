@@ -22,23 +22,20 @@ export function ShortMoviesToggle() {
   };
 
   return (
-    <div className="flex items-center gap-3">
-      <label className={`relative inline-flex h-[14px] w-[34px] cursor-pointer items-center rounded-full transition-colors hover:opacity-70 ${
-        checked ? 'bg-green-500' : 'bg-light-700 dark:bg-dark-700'
-      }`}>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={onChange}
-          className="sr-only"
-        />
+    <div className="flex items-center justify-center gap-3">
+      <label
+        className={`relative inline-flex h-[14px] w-[34px] cursor-pointer items-center rounded-full transition-colors hover:opacity-70 ${
+          checked ? 'bg-green-500' : 'bg-light-700 dark:bg-dark-700'
+        }`}
+      >
+        <input type="checkbox" checked={checked} onChange={onChange} className="sr-only" />
         <span
           className={`absolute h-[10px] w-[10px] rounded-full bg-white transition-transform duration-300 ${
             checked ? 'translate-x-[22px]' : 'translate-x-[2px]'
           }`}
         />
       </label>
-      <p className="text-xs font-normal text-dark-900 dark:text-light-900">Короткометражки</p>
+      <p className="text-dark-900 dark:text-light-900 text-xs font-normal">Короткометражки</p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ type Props = {
 
 export function MoviesGrid({ children }: Props) {
   return (
-    <div className="flex flex-wrap justify-center gap-10 px-2.5 md:gap-x-[30px] md:gap-y-[45px] xl:gap-y-[60px]">
+    <div className="flex flex-wrap justify-center gap-10 px-2.5 pt-[40px] md:gap-x-[30px] md:gap-y-[45px] md:pt-[70px] xl:gap-y-[60px]">
       {children}
     </div>
   );

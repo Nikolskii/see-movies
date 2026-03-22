@@ -1,8 +1,12 @@
 import Image from 'next/image';
 
-import { formatDuration, getNomorepartiesImageUrl, MovieCard } from '@/entities/movie';
+import {
+  BeatfilmMovieWithSaved,
+  formatDuration,
+  getNomorepartiesImageUrl,
+  MovieCard,
+} from '@/entities/movie';
 import { SaveMovieButton } from '@/features/save-movie';
-import { BeatfilmMovieWithSaved } from '@/ui-pages/movies/model/types';
 import { MoviesGrid } from '@/widgets/movies-grid';
 
 type Props = {

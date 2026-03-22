@@ -28,9 +28,9 @@ export async function MoviesPage({ isShortOnly }: Props) {
     <div className="page-root">
       <div className="container mx-auto flex min-h-screen flex-col">
         <Header isAuthorized />
-        {/* Form and input search movie */}
-        {/* Switcher короткого кино */}
-        <ShortMoviesToggle />
+        <div className="mb-[40px]">
+          <ShortMoviesToggle />
+        </div>
         <div className="flex-1">
           <MoviesList movies={filteredMovies} />
         </div>
