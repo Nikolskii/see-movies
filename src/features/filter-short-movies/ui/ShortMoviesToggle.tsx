@@ -18,7 +18,9 @@ export function ShortMoviesToggle() {
       params.set('short', '1');
     }
 
-    router.replace(`${pathname}?${params.toString()}`);
+    const nextQueryString = params.toString();
+
+    router.replace(nextQueryString ? `${pathname}?${nextQueryString}` : pathname, { scroll: false });
   };
 
   return (
