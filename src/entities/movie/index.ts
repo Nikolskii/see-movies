@@ -1,3 +1,4 @@
+export { filterMovies } from './lib/filterMovies';
 export { filterShortMovies } from './lib/filterShortMovies';
 export { formatDuration } from './lib/formatDuration';
 export { getNomorepartiesImageUrl } from './lib/getNomorepartiesImageUrl';
