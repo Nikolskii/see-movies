@@ -1,29 +1,20 @@
-import { Suspense } from 'react';
-
 import { Footer } from '@/shared/ui';
-import { SavedMoviesContent } from '@/ui-pages/saved-movies/ui/SavedMoviesContent';
 import { Header } from '@/widgets/header';
 import { MoviesGridSkeleton } from '@/widgets/movies-grid';
 import { MoviesSearch } from '@/widgets/movies-search';
 
-type Props = {
-  isShortOnly: boolean;
-  searchQuery: string;
-};
-
-export function SavedMoviesPage({ isShortOnly, searchQuery }: Props) {
+export function SavedMoviesPageLoading() {
   return (
     <div className="page-root">
       <div className="container mx-auto flex min-h-screen flex-col">
         <Header isAuthorized />
         <MoviesSearch />
         <div className="flex-1">
-          <Suspense fallback={<MoviesGridSkeleton />}>
-            <SavedMoviesContent isShortOnly={isShortOnly} searchQuery={searchQuery} />
-          </Suspense>
+          <MoviesGridSkeleton />
         </div>
         <Footer />
       </div>
     </div>
   );
 }
+

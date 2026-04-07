@@ -1,11 +1,10 @@
 import { Suspense } from 'react';
 
 import { Footer } from '@/shared/ui';
+import { MoviesContent } from '@/ui-pages/movies/ui/MoviesContent';
 import { Header } from '@/widgets/header';
 import { MoviesGridSkeleton } from '@/widgets/movies-grid';
 import { MoviesSearch } from '@/widgets/movies-search';
-
-import { MoviesContent } from './MoviesContent';
 
 type Props = {
   isShortOnly: boolean;
